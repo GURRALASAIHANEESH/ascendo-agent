@@ -1,6 +1,6 @@
-# Ascendo AI Community Jobs
+# Field Service Jobs
 
-Ascendo AI Community Jobs is a full-stack field service job aggregation platform built for the Ascendo assessment. It is designed to collect roles from multiple source types, normalize them into a single database, refresh them on a schedule, and present them through a searchable jobs interface with source management.
+A full-stack job aggregation platform built to collect field service roles from multiple source types, normalize them into a single database, refresh them on a schedule, and present them through a searchable jobs interface with source management.
 
 ## Overview
 
@@ -80,7 +80,7 @@ Next.js UI
 ## Project Structure
 
 ```text
-ascendo-jobs/
+field-service-jobs/
 ├── backend
 │   ├── alembic
 │   ├── app
@@ -152,10 +152,10 @@ cd ascendo-agent
 If you are using Docker:
 
 ```powershell
-docker run --name ascendo-postgres `
-  -e POSTGRES_USER=ascendo `
-  -e POSTGRES_PASSWORD=ascendo_pass `
-  -e POSTGRES_DB=ascendo_jobs `
+docker run --name jobs-postgres `
+  -e POSTGRES_USER=jobsuser `
+  -e POSTGRES_PASSWORD=jobs_pass `
+  -e POSTGRES_DB=field_service_jobs `
   -p 5434:5432 `
   -d postgres:16
 ```
@@ -163,7 +163,7 @@ docker run --name ascendo-postgres `
 If the container already exists but is stopped:
 
 ```powershell
-docker start ascendo-postgres
+docker start jobs-postgres
 ```
 
 ## 3) Backend setup
@@ -178,7 +178,7 @@ pip install -r requirements.txt
 Create `backend/.env`:
 
 ```env
-DATABASE_URL=postgresql+asyncpg://ascendo:ascendo_pass@localhost:5434/ascendo_jobs
+DATABASE_URL=postgresql+asyncpg://jobsuser:jobs_pass@localhost:5434/field_service_jobs
 ```
 
 Optional environment values may be needed depending on which adapters you use, for example third-party API credentials.
@@ -254,10 +254,6 @@ Open:
 - Schema normalization for heterogeneous job inputs
 - Operational source management from the UI
 
-## Assessment Context
-
-This project was built for an Ascendo assessment centered on a field service jobs agent for a community of senior field service leaders. The intended product direction is a jobs intelligence platform that can grow through community-added sources, periodic refreshes, and broad field service role coverage.
-
 ## Known Limitations
 
 - Some external sources may block requests or return no matching jobs depending on search terms.
@@ -283,7 +279,7 @@ From the repository root:
 git init
 git remote add origin https://github.com/GURRALASAIHANEESH/ascendo-agent.git
 git add .
-git commit -m "Initial commit: Ascendo AI Community Jobs"
+git commit -m "Initial commit: Field Service Jobs Platform"
 git branch -M main
 git push -u origin main
 ```
@@ -292,4 +288,4 @@ If Git asks for authentication, use a GitHub Personal Access Token instead of yo
 
 ## Author
 
-Built by GURRALA SAI HANEESH !! 
+Built by Gurrala Sai Haneesh
